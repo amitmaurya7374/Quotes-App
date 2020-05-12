@@ -30,15 +30,52 @@ class _QuotesState extends State<Quotes> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              quotes[_index% quotes.length],
+            Expanded(
+              child: Center(
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  width: 350,
+                  height: 200,
+                  margin: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.transparent,
+                    borderRadius: BorderRadius.circular(20.0),
+                    border: Border.all(
+                      color: Colors.black,
+                      width: 1.23,
+                    ),
+                  ),
+                  child: Center(
+                    child: Text(
+                      quotes[_index % quotes.length],
+                      style: TextStyle(color: Colors.grey.shade700,fontSize: 18,fontStyle: FontStyle.italic),
+                    ),
+                  ),
+                ),
+              ),
             ),
-            FlatButton.icon(
-              color: Colors.greenAccent,
-              onPressed: _showQuote,
-              icon: Icon(Icons.wb_sunny),
-              label: Text("Inspire me"),
-            )
+            Divider(
+              color: Colors.grey,
+              thickness: 2,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 18.0,
+              ),
+              child: FlatButton.icon(
+                color: Colors.greenAccent.shade700,
+                onPressed: _showQuote,
+                icon: Icon(Icons.wb_sunny),
+                label: Text(
+                  "Inspire me",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 18.0,
+                  ),
+                ),
+              ),
+            ),
+            Spacer(),
           ],
         ),
       ),
@@ -47,8 +84,7 @@ class _QuotesState extends State<Quotes> {
 
   void _showQuote() {
     setState(() {
-    _index = _index + 1;  
+      _index = _index + 1;
     });
-    
   }
 }
